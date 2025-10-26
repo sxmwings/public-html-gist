@@ -1,12 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"/>
+   <meta name="apple-mobile-web-app-capable" content="yes">
+   <title>Hybrid Master 51</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Bonjour le monde !</h1>
-    <p>Ceci est un exemple de fichier HTML provenant d'un Gist.</p>
+   <div id="restTimer" class="rest-timer-fixed">
+       <div class="timer-content">
+           <div class="timer-circle">
+               <svg width="80" height="80" viewBox="0 0 80 80">
+                   <circle cx="40" cy="40" r="36" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="none"/>
+                   <circle id="timerProgressCircle" cx="40" cy="40" r="36" stroke="#F59E0B" stroke-width="6" fill="none" stroke-linecap="round"/>
+               </svg>
+               <div id="timerText" class="timer-text">0:00</div>
+           </div>
+           <div class="timer-info">
+               <div id="nextExerciseName" class="timer-next">Repos</div>
+               <div class="timer-label">Temps de repos</div>
+           </div>
+           <button id="skipTimerBtn" class="timer-skip">✕</button>
+       </div>
+   </div>
+
+   <div id="home" class="screen active">
+       <div class="container-mobile">
+           <header class="header-main">
+               <div class="header-icon">🏆</div>
+               <h1 class="header-title">HYBRID MASTER 51</h1>
+               <p class="header-subtitle">26 semaines • 3 séances/semaine</p>
+           </header>
+
+           <div class="week-card">
+               <div class="week-header">
+                   <div>
+                       <div class="week-label">Semaine <span id="weekDisplay">1</span></div>
+                       <div id="blockName" class="week-block">Bloc</div>
+                   </div>
+                   <div class="week-nav">
+                       <button id="prevWeek" class="btn-nav">← Préc.</button>
+                       <button id="advanceWeek" class="btn-primary">Suiv. →</button>
+                   </div>
+               </div>
+               <div id="progList" class="session-grid"></div>
+           </div>
+
+           <div class="card-dark">
+               <div class="card-title">Tableau de Bord</div>
+               <div id="quickMsg" class="dashboard-msg">Prêt.</div>
+               <div class="dashboard-actions">
+                   <button id="openStats" class="btn-dashboard">📊 Poids</button>
+                   <button id="exportWeights" class="btn-dashboard">💾 Export</button>
+                   <button id="resetApp" class="btn-dashboard danger">⚠️ Reset</button>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <div id="session" class="screen">
+       <div class="container-mobile">
+           <div class="session-header">
+               <button class="btn-back" id="backHomeBtn">← Retour</button>
+               <div id="sessionTitle" class="session-title">Séance</div>
+               <div style="width:80px"></div>
+           </div>
+           <div id="exerciseList" class="exercise-list"></div>
+       </div>
+   </div>
+
+   <div id="modal" class="modal">
+       <div class="modal-overlay" onclick="closeModal()"></div>
+       <div class="modal-content" id="modalContent"></div>
+   </div>
+
+   <script src="app.js"></script>
 </body>
 </html>
